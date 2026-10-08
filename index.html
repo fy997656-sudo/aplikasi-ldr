@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KitaSpace ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff5c8a">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+<!-- ============ HALAMAN LOGIN ============ -->
+<section id="login" class="page">
+  <div class="card login-card">
+    <h1>Kita Space ❤️</h1>
+    <p class="muted">Ruang pribadi untuk berdua</p>
+    <input id="email" placeholder="Email atau username" autocomplete="username">
+    <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
+    <button id="btnLogin" class="btn">Masuk</button>
+    <p id="loginErr" class="err"></p>
+    <p class="muted small">Demo: <b>kamu@kita.app</b> atau <b>dia@kita.app</b><br>Password: <b>kita1234</b></p>
+  </div>
+</section>
+
+<!-- ============ APLIKASI (setelah login) ============ -->
+<div id="app" class="hidden">
+  <header>
+    <b>Kita Space ❤️</b>
+    <button id="btnTheme" class="icon" title="Dark/Light">🌓</button>
+  </header>
+
+  <main>
+    <!-- DASHBOARD -->
+    <section id="v-dash" class="view">
+      <div class="card">
+        <h3 id="meName"></h3>
+        <p id="meStatus" class="muted"></p>
+      </div>
+      <div class="card">
+        <h3 id="pName"></h3>
+        <p id="pOnline" class="muted"></p>
+        <p id="pLoc"></p>
+        <p id="pHome"></p>
+        <p id="pTime" class="muted small"></p>
+      </div>
+    </section>
+
+    <!-- CHAT -->
+    <section id="v-chat" class="view hidden chat">
+      <div id="msgs"></div>
+      <div class="composer">
+        <input id="msgInput" placeholder="Tulis pesan...">
+        <button id="btnSend" class="btn">Kirim</button>
+      </div>
+    </section>
+
+    <!-- LOKASI -->
+    <section id="v-loc" class="view hidden">
+      <div class="card">
+        <h3>Lokasi Saya</h3>
+        <p id="myLoc" class="muted">Tidak berbagi</p>
+        <p id="myTime" class="muted small"></p>
+        <button id="btnShare" class="btn">Bagikan Lokasi</button>
+        <button id="btnStop" class="btn ghost">Berhenti Berbagi</button>
+        <p id="locMsg" class="err small"></p>
+      </div>
+      <div class="card">
+        <h3>Lokasi Pasangan</h3>
+        <p id="pStatus"></p>
+        <p id="pCoord" class="muted"></p>
+        <p id="pUpdated" class="muted small"></p>
+        <a id="pMaps" class="btn ghost" target="_blank" rel="noopener">Lihat di Maps</a>
+      </div>
+    </section>
+
+    <!-- RUMAH -->
+    <section id="v-home" class="view hidden">
+      <div class="card">
+        <h3>🏠 Lokasi Rumah</h3>
+        <label>Latitude</label><input id="hLat" type="number" step="any">
+        <label>Longitude</label><input id="hLng" type="number" step="any">
+        <label>Radius (meter)</label><input id="hRad" type="number" min="10" value="100">
+        <button id="btnHereHome" class="btn ghost">Pakai lokasi saya sekarang</button>
+        <button id="btnSaveHome" class="btn">Simpan Rumah</button>
+        <p id="homeMsg" class="small muted"></p>
+      </div>
+    </section>
+
+    <!-- PENGATURAN / PRIVASI -->
+    <section id="v-set" class="view hidden">
+      <div class="card">
+        <h3>Privasi</h3>
+        <label class="row"><input type="checkbox" id="pShare"> Bagikan lokasi</label>
+        <label class="row"><input type="checkbox" id="pOnlineChk"> Tampilkan status online</label>
+        <label class="row"><input type="checkbox" id="pHist"> Simpan riwayat lokasi</label>
+        <button id="btnStop2" class="btn ghost">Berhenti berbagi lokasi</button>
+        <p class="muted small">Lokasi hanya dikirim saat kamu mengaktifkannya sendiri. Tidak ada pelacakan diam-diam.</p>
+      </div>
+      <button id="btnLogout" class="btn ghost">Keluar</button>
+    </section>
+  </main>
+
+  <nav>
+    <button data-go="dash">❤️<span>Beranda</span></button>
+    <button data-go="chat">💬<span>Chat</span></button>
+    <button data-go="loc">📍<span>Lokasi</span></button>
+    <button data-go="home">🏠<span>Rumah</span></button>
+    <button data-go="set">⚙️<span>Atur</span></button>
+  </nav>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

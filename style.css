@@ -1,0 +1,54 @@
+/* ===== Warna lewat CSS variable: gampang ganti tema ===== */
+:root{
+  --bg:#f6f4fb; --card:#ffffff; --tx:#22212b; --muted:#7a778a;
+  --pink:#ff5c8a; --me:#ff5c8a; --them:#e9e6f3; --line:#e4e1ee;
+}
+[data-theme="dark"]{
+  --bg:#14131a; --card:#1f1e29; --tx:#f1f0f7; --muted:#9a97ad;
+  --me:#d63f6e; --them:#2b2a38; --line:#2f2e3d;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:system-ui,sans-serif;
+  padding-top:env(safe-area-inset-top,0px)}
+.hidden{display:none !important}
+.muted{color:var(--muted)} .small{font-size:12px} .err{color:#e5484d;font-size:13px}
+
+/* ===== Komponen dasar ===== */
+.card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:12px;
+  box-shadow:0 2px 10px #0000000d;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1,h3{margin:0 0 8px}
+input:not([type=checkbox]){width:100%;padding:12px;margin:6px 0;border:1px solid var(--line);
+  border-radius:12px;background:var(--bg);color:var(--tx);font-size:16px}
+label{font-size:13px;color:var(--muted)}
+label.row{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--tx);padding:8px 0}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;padding:12px;margin-top:8px;
+  border:0;border-radius:12px;background:var(--pink);color:#fff;font-size:15px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--pink);border:1.5px solid var(--pink)}
+.icon{background:none;border:0;font-size:20px}
+
+/* ===== Login ===== */
+.page{min-height:100%;display:grid;place-items:center;padding:20px}
+.login-card{width:100%;max-width:380px;text-align:center}
+
+/* ===== Layout app ===== */
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;
+  position:sticky;top:0;background:var(--bg);z-index:5}
+main{padding:0 14px 90px}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);
+  border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;background:none;border:0;padding:10px 0;font-size:20px;color:var(--muted);
+  display:flex;flex-direction:column;align-items:center}
+nav button span{font-size:10px}
+nav button.on{color:var(--pink)}
+
+/* ===== Chat: input di bawah, enak untuk satu tangan ===== */
+.chat{display:flex;flex-direction:column;height:calc(100dvh - 160px)}
+#msgs{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:4px 0}
+.bubble{max-width:78%;padding:9px 13px;border-radius:18px;line-height:1.35;word-wrap:break-word}
+.bubble small{display:block;font-size:10px;opacity:.7;margin-top:3px}
+.bubble.me{align-self:flex-end;background:var(--me);color:#fff;border-bottom-right-radius:4px}
+.bubble.them{align-self:flex-start;background:var(--them);border-bottom-left-radius:4px}
+.composer{display:flex;gap:8px;align-items:center}
+.composer .btn{width:auto;margin:0;padding:12px 18px}
